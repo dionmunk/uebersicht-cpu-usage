@@ -14,6 +14,14 @@ NOW=$(date +%s)
 KSTAMP=0
 [ -f "$KCACHE" ] && KSTAMP=$(date -r "$KCACHE" +%s 2>/dev/null)
 AGE=$((NOW - KSTAMP))
+# Clear a stale lock left by a sampler that was killed before it could clean up
+# (system sleep, Übersicht restart, display change). A sample takes ~1.5s, so a lock
+# older than 15s is dead — without this the refresh below would never run again and
+# the cached value would freeze permanently.
+if [ -f "$KLOCK" ]; then
+    LSTAMP=$(date -r "$KLOCK" +%s 2>/dev/null || echo 0)
+    [ $((NOW - LSTAMP)) -gt 15 ] && rm -f "$KLOCK"
+fi
 if [ "$AGE" -gt 4 ] && [ ! -f "$KLOCK" ]; then
     (
         : > "$KLOCK"
