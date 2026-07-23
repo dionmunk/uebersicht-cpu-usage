@@ -1,6 +1,6 @@
 {
     "name": "CPU Usage",
-    "description": "A simple CPU Usage monitor.",
+    "description": "A CPU usage monitor showing user, system, and idle load with a stacked bar, plus an Apple Silicon throttle indicator.",
     "author": "Dion Munk",
     "email": "dion@dionmunk.com"
 }

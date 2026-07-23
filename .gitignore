@@ -1,0 +1,11 @@
+# OS
+.DS_Store
+.DS_Store?
+__MACOSX
+
+# Compiled Swift helper (rebuilt on first run by cputick.sh)
+cpu-usage.widget/lib/cputick
+
+# Runtime cache/lock
+.kerneltask.cache
+.kerneltask.lock
