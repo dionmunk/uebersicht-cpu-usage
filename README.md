@@ -6,7 +6,7 @@ A CPU usage widget for [Übersicht](http://tracesof.net/uebersicht/). It shows u
 
 ## Screenshot
 
-![Screenshot](screenshots/screenshot.png)
+![Screenshot](screenshot.png)
 
 ## Requirements
 
