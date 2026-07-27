@@ -1,5 +1,8 @@
 command: "cpu-usage.widget/lib/cputick.sh"
 
+# Enable or disable this widget.
+widgetEnabled: true   # true | false
+
 refreshFrequency: '1s'
 
 # Toggle the graph panel on/off without removing the widget
@@ -252,6 +255,11 @@ render: -> """
 """
 
 update: (output, domEl) ->
+  # Hide entirely when disabled.
+  if not @widgetEnabled
+    $(domEl).css('display', 'none')
+    return
+  $(domEl).css('display', '')
   parts = output.trim().split /\s+/
   ticks =
     user:   Number(parts[0])
